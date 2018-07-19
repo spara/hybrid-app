@@ -6,6 +6,7 @@ node {
     
     stage 'Push Docker image'
     withDockerRegistry([ url: "https://index.docker.io/v2/", credentialsId: "spara" ]) {
+        testImage.push("${env.BUILD_NUMBER}")
         testImage.push()
     }
 

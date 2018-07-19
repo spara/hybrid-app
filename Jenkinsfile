@@ -5,7 +5,7 @@ node {
     def testImage = docker.build("java-app", "./java-app") 
     
     stage 'Push Docker image'
-    docker.withRegistry("https://registry.hub.docker.com", "spara") {
+    docker.withRegistry("", "spara") {
         testImage.push()
     }
 

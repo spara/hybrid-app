@@ -5,13 +5,7 @@ node {
     def testImage = docker.build("java-app", "./java-app") 
     
     stage 'Push Docker image'
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: params.JP_DockerMechIdCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-			usr = USERNAME
-			pswd = PASSWORD
-     }
-
-    withDockerRegistry([ url: "https://index.docker.io/v1/", credentialsId: "spara" ]) {
-        sh "docker login -u ${usr} -p ${pswd}"
+    docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
         testImage.push("${env.BUILD_NUMBER}")
         testImage.push()
     }

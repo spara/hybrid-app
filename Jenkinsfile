@@ -13,20 +13,20 @@ node {
     }
     stage('Push java-app image') {
       docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        // java-appImage.push("${env.BUILD_NUMBER}")
+        java-appImage.push("${env.BUILD_NUMBER}")
         java-appImage.push()
       }
     }
-    stage('Push database image') {
-      docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        dbImage.push("${env.BUILD_NUMBER}")
-        dbImage.push()
-      }
-    }
-    stage('Push dotnet-api image') {
-      docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        // dotnetapiImage.push("${env.BUILD_NUMBER}")
-        dotnetapiImage.push()
-      }
-    }
+    // stage('Push database image') {
+    //   docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
+    //     dbImage.push("${env.BUILD_NUMBER}")
+    //     dbImage.push()
+    //   }
+    // }
+    // stage('Push dotnet-api image') {
+    //   docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
+    //     // dotnetapiImage.push("${env.BUILD_NUMBER}")
+    //     dotnetapiImage.push()
+    //   }
+    // }
 }

@@ -13,7 +13,7 @@ node {
     }
     stage('Push java-app image') {
       docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        java-appImage.push("${env.BUILD_NUMBER}")
+        // java-appImage.push("${env.BUILD_NUMBER}")
         java-appImage.push()
       }
     }
@@ -25,7 +25,7 @@ node {
     }
     stage('Push dotnet-api image') {
       docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        dotnetapiImage.push("${env.BUILD_NUMBER}")
+        // dotnetapiImage.push("${env.BUILD_NUMBER}")
         dotnetapiImage.push()
       }
     }

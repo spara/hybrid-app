@@ -1,15 +1,19 @@
 node {
+    def javaappImage
+    def dbImage
+    def dotnetapiImage
+    
     stage('Clone repo') {
       checkout scm
     }
     stage('Build java-app') {
-      def javaappImage = docker.build("spara/java-app", "./java-app")
+      javaappImage = docker.build("spara/java-app", "./java-app")
     } 
     stage('Build database') {
-      def dbImage = docker.build("spara/database", "./database")
+      dbImage = docker.build("spara/database", "./database")
     }
     stage('Build dotnet-api') {
-      def dotnetapiImage = docker.build("spara/dotnet-api", "./dotnet-api")
+      dotnetapiImage = docker.build("spara/dotnet-api", "./dotnet-api")
     }
     stage('Push java-app image') {
       docker.withRegistry("https://index.docker.io/v1/", "spara" ) {

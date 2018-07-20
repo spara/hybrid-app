@@ -13,7 +13,7 @@ node {
     }
     stage('Push java-app image') {
       docker.withRegistry("https://index.docker.io/v1/", "spara" ) {
-        java-appImage.push("${env.BUILD_NUMBER}")
+        // java-appImage.push("${env.BUILD_NUMBER}")
         java-appImage.push()
       }
     }

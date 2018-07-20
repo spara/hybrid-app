@@ -1,5 +1,5 @@
 node {
-    stage("Clone repo') {
+    stage('Clone repo') {
       checkout scm
     }
     stage('Build java-app') {
